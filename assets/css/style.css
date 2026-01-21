@@ -1,42 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=DM+Sans:wght@400;500;600&display=swap");
 
-/* ---------------------------------------------
-   BASE
---------------------------------------------- */
+/* =====================================================
+   BASE — FLEX STRUCTURE
+===================================================== */
+html {
+  height: 100%;
+}
 
 body {
   font-family: "Roboto", sans-serif;
   background-color: #9f1d35;
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #333;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.custom-title,
-.custom-subtitle {
-  font-family: "DM Sans", sans-serif;
+.main-container {
+  flex: 1;
 }
 
-/* ---------------------------------------------
+/* =====================================================
    HEADER / NAVBAR
---------------------------------------------- */
-
+===================================================== */
 .custom-header {
   background-color: #f4efea;
-  height: 72px;
+  min-height: 72px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .navbar-wrapper {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 20px;
 }
 
 .navbar {
@@ -46,20 +46,16 @@ h6,
   width: 100%;
 }
 
-/* ---------------------------------------------
-   LOGO
---------------------------------------------- */
-
 .logo {
   display: flex;
   align-items: center;
-  margin-left: 0; /* force le logo au max à gauche du container */
-  padding-left: 0; /* neutralise tout padding éventuel */
+  margin-left: 0;
+  padding-left: 0;
   flex-shrink: 0;
 }
 
 .logo img {
-  height: 72px; /* hauteur idéale pour un header de 72px */
+  height: 72px;
   width: auto;
   display: block;
 }
@@ -87,9 +83,6 @@ h6,
   position: relative;
   transition: color 0.25s ease;
 }
-.navbar > .container-fluid {
-  padding-left: 0 !important;
-}
 
 /* Hover élégant trait animé */
 .navbar-nav .nav-link::after {
@@ -113,176 +106,294 @@ h6,
   transform: scaleX(1);
 }
 
-/* ---------------------------------------------
-   CARDS SECTIONS
---------------------------------------------- */
-
+/* =====================================================
+   CARDS
+===================================================== */
 .custom-card {
   background-color: #efe1d4;
   border-radius: 12px;
-  border: none;
-  width: 480px;
-  height: 430px;
-  margin: 0 auto;
-  padding: 32px 36px 28px;
+  width: 100%;
+  height: 300px;
+  padding: 24px;
   box-sizing: border-box;
-}
-
-.card-title {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .custom-title {
-  font-size: 35px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 2rem;
   color: #f6ede6;
   text-align: center;
-  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 16px;
 }
 
 .custom-subtitle {
-  font-size: 25px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.5rem;
   color: #f6ede6;
   text-align: center;
-  margin-bottom: 20px;
-}
-
-.custom-card p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #000;
-  margin: 0 0 12px 0;
-}
-
-.custom-card p:last-child {
-  margin-bottom: 0;
-}
-
-/* ---------------------------------------------
-   AVIS
---------------------------------------------- */
-
-.custom-avis-card {
-  background-color: #efe1d4;
-  border-radius: 12px;
-  border: none;
-  width: 320px;
-  height: 150px;
-  margin: 0 auto 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 10px;
-}
-
-.custom-avis-card p {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.6;
-}
-
-.avis-section {
   margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+/* =====================================================
+   SECTION 1 - Réduction de l'écart entre les colonnes
+===================================================== */
+.row.g-4 {
+  --bs-gutter-x: 0.5rem; /* Réduction de l'écart horizontal */
+  --bs-gutter-y: 1rem; /* Réduction de l'écart vertical */
+}
+
+/* =====================================================
+   AVIS
+===================================================== */
+.avis-section {
+  margin-bottom: 10px;
 }
 
 .avis-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
-/* ---------------------------------------------
-   BUTTONS
---------------------------------------------- */
-
-.custom-button {
-  background-color: #f8c491;
-  color: #000;
-  border: none;
-  border-radius: 6px;
-  width: 260px;
-  height: 40px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  display: block;
-  margin: 0 auto;
-  transition: background-color 0.25s ease, transform 0.15s ease;
-}
-
-.custom-button:hover {
-  background-color: #e4a15f;
-  transform: translateY(-1px);
-}
-
-/* ---------------------------------------------
-   FOOTER
---------------------------------------------- */
-
-.custom-footer {
-  background-color: #f4efea;
-  height: 72px;
+.custom-avis-card {
+  background-color: #efe1d4;
+  border-radius: 12px;
+  width: 30%;
+  min-width: 250px;
+  min-height: 100px;
+  padding: 16px;
+  text-align: center;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  justify-content: center;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+.custom-button {
+  background-color: #f8c491;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 260px;
+  height: 44px;
+  border: none;
+  margin: 0 auto 10px;
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  color: #333;
+}
+
+/* =====================================================
+   FOOTER — STICKY BOTTOM
+===================================================== */
+.footer {
+  background-color: #f4efea;
+  padding: 10px 0;
+  width: 100%;
+  margin-top: auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .footer-wrapper {
-  width: 100%;
-  max-width: 1440px;
+  width: auto;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
-.footer-nav {
+.footer-list {
   list-style: none;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  gap: 10px;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap;
 }
 
-.footer-nav a {
+.footer-list a {
   font-family: "DM Sans", sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   text-transform: uppercase;
   color: #000;
   text-decoration: none;
-  padding: 10px 14px;
-  transition: color 0.25s ease;
-}
-
-.footer-nav a:hover {
-  color: #9f1d35;
-}
-/* ---------------------------------------------
-   FOOTER UNDERLINE (same as header)
---------------------------------------------- */
-
-.footer-nav a {
   position: relative;
+  padding: 5px;
   transition: color 0.25s ease;
 }
 
-.footer-nav a::after {
+.footer-list a::after {
   content: "";
   position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 6px;
-  height: 2px;
+  left: 5px;
+  right: 5px;
+  bottom: 2px;
+  height: 1px;
   background-color: #9f1d35;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.25s ease;
 }
 
-.footer-nav a:hover {
+.footer-list a:hover {
   color: #9f1d35;
 }
 
-.footer-nav a:hover::after {
+.footer-list a:hover::after {
   transform: scaleX(1);
+}
+
+.footer-copyright {
+  display: none;
+}
+
+/* =====================================================
+   RESPONSIVE — TABLETTES ET MOBILES (max-width: 992px)
+===================================================== */
+@media (max-width: 992px) {
+  .custom-title {
+    font-size: 1.75rem;
+    margin-top: 30px;
+  }
+
+  .custom-subtitle {
+    font-size: 1.25rem;
+    margin-top: 30px;
+  }
+
+  .custom-card {
+    height: auto;
+    min-height: 250px;
+  }
+
+  /* Avis en colonne */
+  .avis-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .custom-avis-card {
+    width: 80%;
+    margin-bottom: 16px;
+    min-width: auto;
+  }
+
+  /* Menu en colonne */
+  .navbar-nav {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4efea;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  /* Footer - Affichage correct des liens */
+  .footer-list {
+    gap: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-list a {
+    padding: 4px;
+    font-size: 11px;
+    margin: 2px;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE — MOBILES (max-width: 768px)
+===================================================== */
+@media (max-width: 768px) {
+  .custom-title {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+
+  .custom-subtitle {
+    font-size: 1.1rem;
+    margin-top: 20px;
+  }
+
+  .custom-card {
+    padding: 16px;
+    height: auto;
+  }
+
+  .custom-avis-card {
+    width: 90%;
+  }
+
+  .footer {
+    padding: 8px 0;
+  }
+
+  .footer-wrapper {
+    padding: 0 8px;
+  }
+
+  .footer-list {
+    gap: 6px;
+  }
+
+  .footer-list a {
+    padding: 3px;
+    font-size: 10px;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE — PETITS MOBILES (max-width: 576px)
+===================================================== */
+@media (max-width: 576px) {
+  .custom-title {
+    font-size: 1.25rem;
+    margin-top: 15px;
+  }
+
+  .custom-subtitle {
+    font-size: 1rem;
+    margin-top: 15px;
+  }
+
+  .custom-avis-card {
+    width: 95%;
+    min-height: 70px;
+  }
+
+  .footer {
+    padding: 6px 0;
+  }
+
+  .footer-list {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .footer-list a {
+    padding: 2px;
+    font-size: 9px;
+  }
 }

@@ -1,0 +1,200 @@
+/* ---------------------------------------------
+   PAGE NOS MENUS – CARDS MENUS
+--------------------------------------------- */
+
+.menus-list {
+  padding: 4rem 0 6rem;
+}
+
+/* CARD MENU */
+.menu-card {
+  background-color: $color-card-bg;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 350px;
+  height: 750px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 4px 12px $color-card-shadow;
+}
+
+/* TITRE MENU */
+.menu-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: $color-card-title;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+/* IMAGE PRINCIPALE */
+.menu-main-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+/* GALERIE MINIATURES */
+.menu-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+
+  img {
+    width: 55px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      border-color: $color-card-border;
+    }
+  }
+}
+
+/* CONTENU TEXTE */
+.menu-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* DESCRIPTION */
+.menu-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: $color-card-text;
+}
+
+/* PLATS */
+.menu-dishes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+
+  h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    color: $color-card-title;
+  }
+
+  p {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: $color-card-text;
+  }
+}
+
+/* INFOS COMPLEMENTAIRES */
+.menu-infos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+
+  h5 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    color: $color-card-title;
+  }
+
+  p {
+    font-size: 0.7rem;
+    line-height: 1.4;
+    color: $color-card-text;
+  }
+}
+
+/* FOOTER CARD */
+.menu-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 0.7rem;
+  margin-top: auto;
+  text-align: center;
+
+  p {
+    margin: 0;
+    color: $color-card-text;
+  }
+}
+
+/* BOUTON DETAILS */
+/* =============================================
+   BOUTON "DÉTAILS" – CARD MENU
+============================================= */
+
+.btn-menu {
+  width: $btn-menu-width;
+  height: $btn-menu-height;
+
+  background-color: $btn-menu-bg;
+  color: $btn-menu-text;
+
+  border: none;
+  border-radius: $btn-menu-radius;
+
+  font-size: $btn-menu-font-size;
+  font-weight: $btn-menu-font-weight;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-menu:hover {
+  background-color: darken($btn-menu-bg, 6%);
+}
+
+.btn-menu:active {
+  transform: scale(0.97);
+}
+
+/* ---------------------------------------------
+   RESPONSIVE
+--------------------------------------------- */
+
+@media (max-width: $breakpoint-desktop) {
+  .menus-list {
+    padding: 3.5rem 0 5rem;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .menu-card {
+    height: auto; // 🔑 empêche les sections coupées
+  }
+
+  .menu-main-img {
+    height: 160px;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .menus-list {
+    padding: 3rem 0 4rem;
+  }
+
+  .menu-dishes,
+  .menu-infos {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}

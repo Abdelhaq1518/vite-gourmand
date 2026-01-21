@@ -1,0 +1,368 @@
+@import "variables"; // couleurs, breakpoints
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "reset";
+@import "typography";
+@import "menu";
+
+/* ============================================
+   FIX CRITIQUE - HAUTEUR RESPONSIVE
+============================================ */
+
+html,
+body {
+  height: auto !important;
+  min-height: 100vh;
+  overflow-y: visible !important;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+// Assure que tous les containers peuvent grandir
+.container,
+.container-fluid {
+  height: auto !important;
+}
+
+/* ============================================
+   HEADER / NAVBAR
+============================================ */
+
+.custom-header {
+  background-color: $color-header-footer-bg;
+  min-height: 72px;
+  flex-shrink: 0; // Empêche le header de rétrécir
+
+  .navbar {
+    padding: 0;
+
+    > .container {
+      max-width: 1440px;
+      padding: 0 60px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+/* LOGO */
+.logo {
+  padding: 0;
+  margin-right: 80px;
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 65px;
+    width: auto;
+    display: block;
+  }
+}
+
+/* MENU */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  color: #000;
+  position: relative;
+  padding: 0.75rem 1rem;
+  transition: color 0.25s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.4rem;
+    height: 2px;
+    background-color: #9f1d35;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.navbar-toggler {
+  border: none;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+/* ============================================
+   H1 PRINCIPAL
+============================================ */
+.main-title {
+  color: $color-card-bg;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   SECTION 1 - PRESENTATION
+============================================ */
+.presentation {
+  padding: 5rem 0;
+  width: 100%;
+  height: auto; // Important !
+
+  @media (max-width: $breakpoint-desktop) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 3rem 0;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 2rem 0;
+  }
+
+  .presentation-title {
+    color: $color-card-bg;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .presentation-card {
+    width: 100%;
+    max-width: 480px;
+    min-height: 420px; // ✅ clé de l’égalité visuelle
+    display: flex;
+    flex-direction: column;
+
+    background-color: $color-card-bg;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+
+    .card-img-top {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .card-body {
+      flex: 1; // ✅ prend tout l’espace restant
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .presentation-card {
+      max-width: 100%;
+    }
+  }
+}
+
+/* ============================================
+   SECTION 2 - AVIS
+============================================ */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.avis {
+  padding: 5rem 0 6rem;
+  width: 100%;
+  height: auto; // Important !
+
+  .avis-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #b88a7a, #9f1d35);
+    color: #f6ede6;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+  }
+
+  @media (max-width: $breakpoint-desktop) {
+    padding: 4rem 0 6rem;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 3rem 0 5rem;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 2rem 0 4rem;
+  }
+
+  .avis-title {
+    color: $color-card-bg;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .avis-card {
+    width: 250px;
+    min-height: 150px; // Changé en min-height
+    height: auto; // Permet l'expansion
+    background-color: $color-card-bg;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px $color-card-shadow;
+    animation: fadeUp 0.6s ease both;
+
+    &:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+  }
+
+  .card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    height: auto; // Important !
+  }
+
+  .avis-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: $color-card-border;
+    color: $color-card-bg;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .card-text {
+    color: $color-card-text;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .btn-avis {
+    background-color: $btn-primary-bg;
+    color: $btn-primary-text;
+    border: none;
+    border-radius: $btn-radius;
+    padding: 0.6rem 1.6rem;
+    transition: background-color 0.25s ease;
+    margin-top: 1.5rem;
+
+    &:hover {
+      background-color: $btn-primary-hover-bg;
+    }
+  }
+
+  .avis-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    @media (max-width: $breakpoint-mobile) {
+      gap: 1rem;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+/* =====================================================
+   FOOTER
+===================================================== */
+.custom-footer {
+  background-color: #f4efea;
+  margin-top: auto;
+}
+
+.custom-footer small {
+  color: #000;
+}
+.footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2rem;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2rem;
+}
+.footer-link {
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  padding: 0.75 1rem;
+  color: #000;
+  position: relative;
+  padding-bottom: 4px;
+  text-decoration: none;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #9f1d35;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.footer-link:hover::after {
+  transform: scaleX(1);
+}
